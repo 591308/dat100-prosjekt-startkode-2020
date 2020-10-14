@@ -9,6 +9,7 @@ public class GPSDataFileReader {
 	// entry separator in CSV files
 	private static String SEP_STR = ",";
 
+	@SuppressWarnings("unused")
 	private static  String GPSDATA_FORMAT = "time,lat,lon,elevation,accuracy,bearing,speed,satellites,"
 			+ "provider,hdop,vdop,pdop,geoidheight,ageofdgpsdata,dgpsid,activity,battery,annotation";
 
