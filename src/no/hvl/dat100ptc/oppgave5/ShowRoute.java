@@ -10,6 +10,10 @@ import no.hvl.dat100ptc.oppgave4.GPSComputer;
 
 public class ShowRoute extends EasyGraphics {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static int MARGIN = 50;
 	private static int MAPXSIZE = 800;
 	private static int MAPYSIZE = 800;
@@ -68,11 +72,12 @@ public class ShowRoute extends EasyGraphics {
 		double[] longitudes = GPSUtils.getLongitudes(gpspoints);
 		
 		int x, y;
-		for(int i = 0; i < gpspoints.length; i++) {
-			x = (int)((longitudes[i] - GPSUtils.findMin(longitudes))* xstep());
-			y = ybase - (int)(latitudes[i] - GPSUtils.findMin(latitudes)* ystep());
-			
+			for(int i = 0; i < gpspoints.length; i++) {
+				x = MARGIN + (int)((longitudes[i] - GPSUtils.findMin(longitudes)) * xstep());
+				y = ybase - (int)((latitudes[i] - GPSUtils.findMin(latitudes)) * ystep());
+				
 			setColor(0,255,0);
+			
 			fillCircle(x, y, 5);
 			
 		}
@@ -85,8 +90,13 @@ public class ShowRoute extends EasyGraphics {
 
 		setColor(0,0,0);
 		setFont("Courier",12);
-		
-		
+		drawString("Total time:          " + GPSUtils.formatTime(gpscomputer.totalTime()), TEXTDISTANCE, 50);
+		drawString("Total distance:  " + GPSUtils.formatDouble(gpscomputer.totalDistance()/1000) + " km", TEXTDISTANCE, 70);
+		drawString("Total elevation: " + GPSUtils.formatDouble(gpscomputer.totalElevation()) + " m", TEXTDISTANCE, 90);
+		drawString("Max speed:       " + GPSUtils.formatDouble(gpscomputer.maxSpeed()) + " km/t", TEXTDISTANCE, 110);
+		drawString("Average speed:   " + GPSUtils.formatDouble(gpscomputer.averageSpeed()) + " km/t", TEXTDISTANCE, 130);
+		drawString("Energy:          " + GPSUtils.formatDouble(gpscomputer.kcal(80.0, gpscomputer.totalTime(),
+												gpscomputer.averageSpeed() / 3.6)) + " kcal", TEXTDISTANCE, 150);
 		
 	}
 
