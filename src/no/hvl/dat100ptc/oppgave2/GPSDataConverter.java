@@ -12,6 +12,10 @@ public class GPSDataConverter {
 	@SuppressWarnings("unused")
 	private static int TIME_STARTINDEX = 11; // startindex for tidspunkt i timestr
 
+	/*Data has been read from file in form of String need to convert from string
+	 Integers and Double data types, implement a method that represents time into seconds,
+	 using substring method to extract numbers as indexes from string
+	 (from 11 to and with 13, 11 < x <= 13) etc.)*/
 	public static int toSeconds(String timestr) {
 		
 		int secs;
@@ -25,12 +29,20 @@ public class GPSDataConverter {
 		return secs;
 	}
 
+	/*In this method we take String from file that represents time, latitude, 
+	 longitude and height. Then converts them into Integer and Double data types, 
+	 then creates GPSPoint-object with the same data. Method return and poke too 
+	 GPSPoint-object that have been created */
+	
 	public static GPSPoint convert(String timeStr, String latitudeStr, String longitudeStr, String elevationStr) {
 		
-		int sec = toSeconds(timeStr);
+		int sec = toSeconds(timeStr); //toSeconds because time must be in seconds!
 		double dobLat = Double.parseDouble(latitudeStr);
 		double dobLong = Double.parseDouble(longitudeStr);
 		double dobEle = Double.parseDouble(elevationStr);
+		
+		/*creating new object, calling it gpspoint and point our 
+		new variables into that object*/
 		
 		GPSPoint gpspoint = new GPSPoint(sec, dobLat, dobLong, dobEle);
 		return gpspoint;

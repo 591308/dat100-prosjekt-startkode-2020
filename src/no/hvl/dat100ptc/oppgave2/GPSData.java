@@ -2,6 +2,10 @@ package no.hvl.dat100ptc.oppgave2;
 
 import no.hvl.dat100ptc.oppgave1.GPSPoint;
 
+	/*Here we gona need to create GPS points that will bhe read from FILE and then converted
+	 * by using referance tabel, tabel where elements that are saved and pointed (referred)
+	 * to GPSPoint-object*/
+
 public class GPSData {
 
 	private GPSPoint[] gpspoints;
