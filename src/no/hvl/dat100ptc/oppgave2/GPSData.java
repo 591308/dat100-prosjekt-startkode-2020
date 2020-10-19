@@ -8,26 +8,41 @@ import no.hvl.dat100ptc.oppgave1.GPSPoint;
 
 public class GPSData {
 
-	private GPSPoint[] gpspoints;
-	protected int antall = 0;
-
+	//creating object with tabell
+	
+	private GPSPoint[] gpspoints; //will be used to poke to referance tabel of GPSPoints
+	protected int antall = 0;   
+	/* ^ will be used for inserting and to hold controll over where in which positions, 
+	 * indexes next point will be putted in*/
+	//antall will after time give us locatiojn of each GPSPoint!
+	
+	
+	/*this is a constructor for class, Konstructor willl create a tabel of GPS points
+	with size given by "n" and given "antall" = 0, since first elements location will be 0*/
 	public GPSData(int n) {
 
 		antall = 0;
 		gpspoints = new GPSPoint[n];
 	
 	}
-
+	
+	//here its told taht tabell msut return GPSPoint tabell with GPSPoitns from, GPSPoints method
 	public GPSPoint[] getGPSPoints() {
 		return this.gpspoints;
 	}
 	
+	/*Here we put GPS points "gpspoint" in gpspoints-tabel in position given by objectvariable antall*/
 	protected boolean insertGPS(GPSPoint gpspoint) {
 
-		boolean inserted = false;
+		boolean inserted = false; 
+		/*Method inckrements antall so that next point will be placed in next position
+		*method will only insert "gpspoint" while there is place in array, 
+		*which means that "antall" is shorter then gpspoints.length
+		*returns true if all gpspints were placed as if loop tells and false if there'
+		*wasnt enough place*/
 		
-		if(antall <gpspoints.length) {
-			gpspoints[antall] = gpspoint;
+		if(antall < gpspoints.length) { 
+			gpspoints[antall] = gpspoint; //gpspoint calls to method (GPSPoint gpspoint) which goes back to object GPPoint array of "gsppoints"
 			antall++;
 			inserted = true;
 		}
